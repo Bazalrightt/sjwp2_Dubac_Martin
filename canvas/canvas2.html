@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuca</title>
+</head>
+<body>
+     <canvas id="MyCanvas" width="1200" height="500" style="border:1px solid black"></canvas>
+    <script>
+        let c = document.getElementById("MyCanvas");
+        let ctx = c.getContext("2d");
+ctx.beginPath();
+        ctx.moveTo(300,50);
+        ctx.lineTo(500,150);
+        ctx.lineTo(100,150);
+        ctx.lineTo(300,50);
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+
+
+   ctx.rect(100,150, 400, 200);
+   ctx.stroke = "blue";
+         ctx.fillStyle = "lightblue";
+        ctx.fill();
+
+
+         </script>
+</body>
+</html>
