@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moje zadaće</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #eef0f5;
+    --ink-dim: #b7bcce;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+  }
+
+  body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6vh 6vw 8vh;
+    background: #0e0f18;
+    overflow-x: hidden;
+    isolation: isolate;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 180vmax;
+    height: 180vmax;
+    background: conic-gradient(
+      from 0deg,
+      #1a1440,
+      #3a1f4d,
+      #0f2a44,
+      #23163f,
+      #142d3a,
+      #1a1440
+    );
+    filter: blur(60px);
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: spinGradient 40s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes spinGradient {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; }
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 6vh;
+    max-width: 640px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  header p {
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 150px;
+    padding: 1.4rem 1.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card:hover, .card:focus-visible {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+
+  .card:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  .card .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ink-dim);
+    margin-bottom: 1rem;
+  }
+
+  .card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 0.3rem;
+  }
+
+  .card span {
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+  }
+
+  footer {
+    margin-top: 6vh;
+    color: var(--ink-dim);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Moje zadaće</h1>
+    <p>Martin Dubac 4.E</p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="zadaca-matematika.html">
+      <span class="dot"></span>
+      <div>
+        <h2>zadaca 1</h2>
+        <span>Otvori zadaću</span>
+      </div>
+    </a>
+
+    <a class="card" href="zadaca-hrvatski.html">
+      <span class="dot"></span>
+      <div>
+        <h2>zadaca 2</h2>
+        <span>Otvori zadaću</span>
+      </div>
+    </a>
+
+    <a class="card" href="zadaca-engleski.html">
+      <span class="dot"></span>
+      <div>
+        <h2>zadaca 3</h2>
+        <span>Otvori zadaću</span>
+      </div>
+    </a>
+
+    <a class="card" href="zadaca-fizika.html">
+      <span class="dot"></span>
+      <div>
+        <h2>zadaca 4</h2>
+        <span>Otvori zadaću</span>
+      </div>
+    </a>
+
+    <a class="card" href="zadaca-informatika.html">
+      <span class="dot"></span>
+      <div>
+        <h2>zadaca 5</h2>
+        <span>Otvori zadaću</span>
+      </div>
+    </a>
+
+    <a class="card" href="zadaca-biologija.html">
+      <span class="dot"></span>
+      <div>
+        <h2>zadaca 6</h2>
+        <span>Otvori zadaću</span>
+      </div>
+    </a>
+  </main>
+
+  <footer>Klikni na karticu da otvoriš pripadajuću zadaću.</footer>
+
+</body>
+</html>
