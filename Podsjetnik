@@ -1,0 +1,176 @@
+HTML_SVG_osnovni_oblici_i_naredbe.docx
+HTML SVG – osnovni oblici i naredbe
+
+Pregled osnovnih SVG elemenata: pravokutnik, krug, elipsa, linija, trokut, mnogokut, polukrug te atributi fill i stroke.
+
+1. Osnovni SVG
+width – širina SVG područja
+
+height – visina SVG područja
+
+<svg width="500" height="300">
+
+</svg>
+
+2. Pravokutnik – <rect>
+  x – početna X koordinata
+
+  y – početna Y koordinata
+
+  width – širina
+
+  height – visina
+
+  rx – zaobljenje kutova
+
+  <rect x="50" y="50" width="150" height="80" />
+
+  Zaobljeni pravokutnik
+  <rect x="50" y="50" width="150" height="80" rx="15" />
+
+  3. Krug – <circle>
+    cx – X koordinata središta
+
+    cy – Y koordinata središta
+
+    r – polumjer
+
+    <circle cx="150" cy="100" r="50" />
+
+    4. Elipsa – <ellipse>
+      cx – X središta
+
+      cy – Y središta
+
+      rx – vodoravni polumjer
+
+      ry – okomiti polumjer
+
+      <ellipse cx="150" cy="100" rx="80" ry="40" />
+
+      5. Linija – <line>
+        x1, y1 – početna točka
+
+        x2, y2 – završna točka
+
+        <line x1="50" y1="50" x2="200" y2="150" />
+
+        Linija sa strokeom
+        <line x1="50" y1="50" x2="200" y2="150" stroke="black" stroke-width="3" />
+
+        6. Trokut – <polygon>
+          points sadrži koordinate vrhova. Svaki vrh zadan je kao X,Y.
+
+          <polygon points="150,20 50,180 250,180" />
+
+          Trokut s ispunom i obrubom
+          <polygon points="150,20 50,180 250,180" fill="yellow" stroke="black" stroke-width="3" />
+
+          7. Mnogokut – <polygon>
+            Isti element koristi se za kvadrate, peterokute, šesterokute i druge mnogokute.
+
+            <polygon points="50,50 150,50 150,150 50,150" />
+
+            8. Polukrug – <path>
+              M = Move (pomak na početnu točku)
+
+              A = Arc (luk).
+
+              <path d="M 50 100 A 50 50 0 0 1 150 100" />
+
+              Polukrug s ispunom i obrubom
+              <path d="M 50 100 A 50 50 0 0 1 150 100" fill="yellow" stroke="black" stroke-width="3" />
+
+              9. fill – boja unutrašnjosti
+              Primjeri:
+
+              fill="red"
+
+              fill="#ff0000"
+
+              fill="rgb(255, 0, 0)"
+
+              <circle cx="100" cy="100" r="50" fill="red" />
+
+              10. stroke – boja obruba
+              stroke određuje boju obruba, a stroke-width njegovu debljinu.
+
+              <circle cx="100" cy="100" r="50" stroke="black" stroke-width="5" />
+
+              11. fill + stroke
+              <circle cx="100" cy="100" r="50" fill="yellow" stroke="black" stroke-width="3" />
+
+              12. Bez ispune
+              fill="none" znači da unutrašnjost oblika nema boju.
+
+              <circle cx="100" cy="100" r="50" fill="none" stroke="black" stroke-width="3" />
+
+              13. Najvažnije SVG naredbe
+              <svg> – SVG područje
+
+                <rect> – pravokutnik
+
+                  <circle> – krug
+
+                    <ellipse> – elipsa
+
+                      <line> – linija
+
+                        <polygon> – mnogokut / trokut
+
+                          <polyline> – niz povezanih linija
+
+                            <path> – složeniji oblici i lukovi
+
+                              fill – boja ispune
+
+                              stroke – boja obruba
+
+                              stroke-width – debljina obruba
+
+                              14. Kompletan primjer
+                              <!DOCTYPE html>
+                              <html>
+
+                              <head>
+                                <title>SVG oblici</title>
+                              </head>
+
+                              <body>
+
+                                <h1>SVG oblici</h1>
+
+                                <svg width="600" height="400">
+
+                                  <!-- Pravokutnik -->
+                                  <rect x="30" y="30" width="150" height="80" fill="lightblue" stroke="black"
+                                    stroke-width="3" />
+
+                                  <!-- Krug -->
+                                  <circle cx="300" cy="70" r="40" fill="yellow" stroke="black" stroke-width="3" />
+
+                                  <!-- Trokut -->
+                                  <polygon points="450,30 400,120 500,120" fill="lightgreen" stroke="black"
+                                    stroke-width="3" />
+
+                                  <!-- Linija -->
+                                  <line x1="30" y1="180" x2="200" y2="250" stroke="red" stroke-width="5" />
+
+                                  <!-- Elipsa -->
+                                  <ellipse cx="350" cy="220" rx="100" ry="50" fill="pink" stroke="black"
+                                    stroke-width="3" />
+
+                                  <!-- Polukrug -->
+                                  <path d="M 100 330 A 50 50 0 0 1 200 330" fill="yellow" stroke="black"
+                                    stroke-width="3" />
+
+                                </svg>
+
+                              </body>
+
+                              </html>
+
+                              Za početak – osnovna formula
+                              Kod većine osnovnih SVG oblika trebate zapamtiti: OBLIK → KOORDINATE → fill → stroke.
+
+                              <circle cx="100" cy="100" r="50" fill="red" stroke="black" stroke-width="3" />
