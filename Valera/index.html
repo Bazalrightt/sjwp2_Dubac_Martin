@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Skriptni jezici</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Početna</a></li>
+    <li><a href="o-nama.html">O nama</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<h1>HTML, CSS, Canvas i SVG</h1>
+
+<div class="okvir">
+  <p><i>Canvas</i> je HTML5 element koji, pomoću JavaScript-a, omogućava dinamičko iscrtavanje
+  različitih oblika, dodavanje slika, kreiranje animacija na web stranici i sl.</p>
+
+  <p>Na platnu (canvas-u) to ne radimo korištenjem novog jezika (kao što je to slučaj kod SVG)
+  ili korištenjem Flasha. Najčešće uporabe platna su:</p>
+  <ul>
+    <li>crtanje grafova,</li>
+    <li>animiranje, igre i</li>
+    <li>kompozicija slike.</li>
+  </ul>
+
+  <hr> 
+
+  <p><b>SVG</b> (<i>Scalable Vector Graphics</i>) grafika ne gubi kvalitetu prilikom zumiranja ili resize-a.</p>
+  <p>Svi crteži mogu biti interaktivni i dinamički. Svaki element i atribut SVG datoteke može biti
+  animiran. Animacije mogu biti definirane i pokrenute interaktivno ili pomoću skripte.</p>
+  <p>SVG integrira druge W3C standarde kao što su DOM, XSL …</p>
+
+  <hr>
+
+  <h3>Usporedba SVG-a i Canvasa <span>- h3</span></h3>
+  <table class="usporedba">
+    <tr><th>SVG</th><th>HTML Canvas</th></tr>
+    <tr>
+      <td>SVG ima bolju skalabilnost, tako da može imati bolje slike sa velikom kvalitetom na bilo kojoj rezoluciji</td>
+      <td>Canvas ima lošu skalabilnost. Nije prikladan za rad s velikim rezolucijama</td>
+    </tr>
+    <tr>
+      <td>SVG daje bolje performanse sa manjim brojem objekata ili većom površinom</td>
+      <td>Canvas daje bolje performanse za rad sa manjim površinama ili većim brojem objekata</td>
+    </tr>
+    <tr>
+      <td>SVG se može modificirati uz pomoć skripte i CSS-a</td>
+      <td>Canvas se može modificirati samo uz pomoć skripte</td>
+    </tr>
+    <tr>
+      <td>SVG je baziran na vektorima i sastavljen je od oblika</td>
+      <td>Canvas je baziran na pixelima</td>
+    </tr>
+  </table>
+  <br>
+  <table class="kontakt">
+    <tr><th>Ime</th><td>Marko</td></tr>
+    <tr><th rowspan="2">Telefon</th><td>555-1234</td></tr>
+    <tr><td>555-8745</td></tr>
+    
+  </table>
+</div>
+
+<p>Ubacite sljedeću sliku ispod:</p>
+<img src="./Место для Гриффита.jpg" alt="Vector i Raster">
+
+<h2>Primjer SVG-a i Canvasa</h2>
+
+
+<canvas id="platno" width="300" height="300"></canvas>
+
+
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#a8dcf5"/>
+  <rect x="88" y="50" width="124" height="25" fill="#1f5fbf"/>
+  <rect x="90" y="75" width="120" height="115" fill="#fbf3dc"/>
+  <rect x="70" y="105" width="20" height="40" fill="#f5c518"/>
+  <rect x="210" y="105" width="20" height="40" fill="#f5c518"/>
+  <circle cx="122" cy="115" r="8" fill="#1f5fbf"/>
+  <circle cx="178" cy="115" r="8" fill="#1f5fbf"/>
+  <polygon points="150,128 140,142 160,142" fill="#f28c28"/>
+  <path d="M120 150 A30 30 0 0 0 180 150 Z" fill="#f7677d"/>
+  <polygon points="105,212 105,242 145,227" fill="#1f5fbf"/>
+  <polygon points="195,212 195,242 155,227" fill="#1f5fbf"/>
+  <circle cx="150" cy="227" r="9" fill="#f5c518"/>
+</svg>
+
+<script>
+  const c = document.getElementById("platno").getContext("2d");
+  function rect(x, y, w, h, boja) { c.fillStyle = boja; c.fillRect(x, y, w, h); }
+  function krug(x, y, r, boja) { c.fillStyle = boja; c.beginPath(); c.arc(x, y, r, 0, 2 * Math.PI); c.fill(); }
+  function trokut(x1, y1, x2, y2, x3, y3, boja) {
+    c.fillStyle = boja; c.beginPath();
+    c.moveTo(x1, y1); c.lineTo(x2, y2); c.lineTo(x3, y3); c.closePath(); c.fill();
+  }
+
+  rect(0, 0, 300, 300, "#a8dcf5");          // pozadina
+  rect(88, 50, 124, 25, "#1f5fbf");         // šešir
+  rect(90, 75, 120, 115, "#fbf3dc");        // lice
+  rect(70, 105, 20, 40, "#f5c518");         // lijevo uho
+  rect(210, 105, 20, 40, "#f5c518");        // desno uho
+  krug(122, 115, 8, "#1f5fbf");             // oči
+  krug(178, 115, 8, "#1f5fbf");
+  trokut(150, 128, 140, 142, 160, 142, "#f28c28"); // nos
+
+  c.fillStyle = "#f7677d";                  // usta (donji polukrug)
+  c.beginPath(); c.arc(150, 150, 30, 0, Math.PI); c.closePath(); c.fill();
+
+  trokut(105, 212, 105, 242, 145, 227, "#1f5fbf"); // leptir mašna
+  trokut(195, 212, 195, 242, 155, 227, "#1f5fbf");
+  krug(150, 227, 9, "#f5c518");
+</script>
+
+<h2>Kontakt formular</h2>
+<form action="forma.html" method="get">
+  <input type="text" name="ime" placeholder="Ime" required>
+  <input type="email" name="email" placeholder="Email adresa" required>
+  <input type="date" name="datum" required>
+  <button type="submit">Pošalji</button>
+  <button type="reset">Reset</button>
+</form>
+
+</body>
+</html>
