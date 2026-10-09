@@ -1,0 +1,25 @@
+body { 
+  background-color: #C2F8F7; font-family: Arial, sans-serif; 
+}
+        h1 {
+          font-weight: bold; font-size: 2.3em;
+          }
+p { 
+  margin: 7px; color: rgb(86, 86, 86); 
+}
+img {
+   width: 480px; height: 220px; 
+  }
+table.usporedba { border-collapse: collapse; text-align: center; }
+table.usporedba th, table.usporedba td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+table.mjeseci { border-collapse: collapse; width: 300px; text-align: left; }
+table.mjeseci th, table.mjeseci td { border: 1px solid black; }
+
+nav ul { list-style: none; margin: 0; padding: 0; background: #333; overflow: hidden; }
+nav li { float: left; }
+nav a { display: block; color: white; padding: 14px 20px; text-decoration: none; }
+nav a:hover { background: #555; }
+
+form input, form button { display: block; width: 50%; box-sizing: border-box;
+  margin: 8px 0; padding: 8px; border-radius: 3px; border: 1px solid #888; }
+form button { background-color: #C2F8F7; cursor: pointer; }
