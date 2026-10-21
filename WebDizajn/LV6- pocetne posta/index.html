@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prijava na izlet</title>
+  <link rel="stylesheet" href="./css/stil.css">
+</head>
+<body>
+
+  <header class="zaglavlje">
+    <h1>Prijava na stru&ccaron;ni izlet</h1>
+    <p>Tehni&ccaron;ka &scaron;kola Slavonski Brod</p>
+  </header>
+
+  <main class="omotac">
+
+    <form class="obrazac" action="./obrada/primljeno.html" method="post" encyptype="multipart/form-data">
+
+      <p class="polje">
+        <label for="ime">Ime</label>
+        <input type="text" id="ime" name="ime">
+      </p>
+
+      <p class="polje">
+        <label for="prezime">Prezime</label>
+        <input type="text" id="prezime" name="prezime">
+      </p>
+
+      <p class="polje">
+    <label for="lozinka">Lozinka</label>
+    <input
+        type="password"
+        id="lozinka"
+        name="lozinka"
+    >
+    </p>
+
+      <p class="polje">
+        <label for="razred">Razred</label>
+        <select id="razred" name="razred">
+          <option value="4a">4.A</option>
+          <option value="4b">4.B</option>
+          <option value="4e">4.E</option>
+        </select>
+      </p>
+
+      <p class="polje">
+        <label for="eposta">E-po&scaron;ta</label>
+        <input type="email" id="eposta" name="eposta">
+      </p>
+
+      <p class="polje">
+        <label for="napomena">Napomena</label>
+        <textarea id="napomena" name="napomena" rows="3"></textarea>
+      </p>
+
+      <p class="polje">
+    <label for="popis">Popis sudionika</label>
+    <input
+        type="file"
+        id="popis"
+        name="popis"
+    >
+    </p>
+
+      <p class="polje">
+        <button type="submit">Po&scaron;alji prijavu</button>
+        <button
+    type="submit"
+    formaction="./obrada/pregled.html"
+    formmethod="get">
+    Pregledaj prije slanja
+</button>
+      </p>
+      
+    </form>
+
+  </main>
+
+</body>
+</html>
+
