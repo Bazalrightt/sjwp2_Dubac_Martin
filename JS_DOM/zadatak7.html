@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <p id="upozorenje">Obično upozorenje.</p>
+<button id="gumb">Istakni upozorenje</button>
+
+
+<script>
+    const upozorenje = document.getElementById("upozorenje");
+const gumb = document.getElementById("gumb");
+
+gumb.onclick = function() {
+    upozorenje.textContent = "PAŽNJA! Ovo je važno upozorenje!";
+    upozorenje.style.color = "red";
+    upozorenje.style.fontWeight = "bold";
+    upozorenje.style.backgroundColor = "yellow";
+};
+</script>
+</body>
+</html>

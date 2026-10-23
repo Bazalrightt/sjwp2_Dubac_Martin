@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="naslov">Dobro došli</h2>
+
+<button id="gumb">Prikaži poruku</button>
+
+<script>
+const naslov =
+document.getElementById("naslov");
+
+const gumb =
+document.getElementById("gumb");
+
+gumb.onclick = function() {
+
+naslov.textContent = "„Uspješno ste kliknuli gumb!”.";
+
+naslov.style.color = "green";
+};
+</script>
+
+</body>
+</html>
