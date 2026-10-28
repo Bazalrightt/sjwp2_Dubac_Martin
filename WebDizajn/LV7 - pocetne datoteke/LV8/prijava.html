@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava na izlet</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+    <header class="zaglavlje">
+        <h1>Prijava na stručni izlet</h1>
+        <p>Tehnička škola Slavonski Brod</p>
+    </header>
+
+    <main class="omotac">
+
+        <form class="obrazac" action="primljeno.html" method="get">
+
+            <p class="polje">
+                <label for="ime">Ime i prezime</label>
+                <input type="text" id="ime" name="ime"
+                       placeholder="Ana Horvat"
+                       required maxlength="40">
+            </p>
+
+            <p class="polje">
+                <label for="eposta">E-pošta</label>
+                <input type="email" id="eposta" name="eposta"
+                       placeholder="ana@primjer.hr"
+                       required>
+            </p>
+
+            <p class="polje">
+                <label for="datum">Datum rođenja</label>
+                <input type="date" id="datum" name="datum">
+            </p>
+
+            <p class="polje">
+                <label for="sudionici">Broj sudionika</label>
+                <input type="number" id="sudionici" name="sudionici"
+                       min="1" max="5" step="1" value="1">
+            </p>
+
+            <fieldset class="skupina">
+                <legend>Veličina majice</legend>
+
+                <p class="izbor">
+                    <input type="radio" id="majica-s"
+                           name="majica" value="S">
+                    <label for="majica-s">S</label>
+                </p>
+
+                <p class="izbor">
+                    <input type="radio" id="majica-m"
+                           name="majica" value="M" checked>
+                    <label for="majica-m">M</label>
+                </p>
+
+                <p class="izbor">
+                    <input type="radio" id="majica-l"
+                           name="majica" value="L">
+                    <label for="majica-l">L</label>
+                </p>
+            </fieldset>
+
+            <p class="polje">
+                <label for="razred">Razred</label>
+                <input type="text" id="razred" name="razred"
+                       value="4.E" readonly>
+            </p>
+
+            <p class="polje">
+                <label for="mobitel">Broj mobitela</label>
+                <input type="tel" id="mobitel" name="mobitel"
+                       placeholder="091 123 4567"
+                       pattern="[0-9 ]+"
+                       title="Unesite samo znamenke i razmake."
+                       required>
+            </p>
+
+            <p class="polje">
+                <label for="polazak">Datum polaska</label>
+                <input type="date" id="polazak" name="polazak"
+                       value="2027-05-15"
+                       min="2027-05-15"
+                       required>
+            </p>
+
+            <fieldset class="skupina">
+                <legend>Način plaćanja</legend>
+
+                <p class="izbor">
+                    <input type="radio" id="gotovina"
+                           name="placanje" value="gotovina" checked>
+                    <label for="gotovina">Gotovina</label>
+                </p>
+
+                <p class="izbor">
+                    <input type="radio" id="kartica"
+                           name="placanje" value="kartica">
+                    <label for="kartica">Kartica</label>
+                </p>
+
+                <p class="izbor">
+                    <input type="radio" id="uplata"
+                           name="placanje" value="uplata">
+                    <label for="uplata">Bankovna uplata</label>
+                </p>
+            </fieldset>
+
+            <p class="izbor">
+                <input type="checkbox" id="vege"
+                       name="vege" value="da">
+                <label for="vege">Vegetarijanski obrok</label>
+            </p>
+
+            <p class="izbor">
+                <input type="checkbox" id="prijevoz"
+                       name="prijevoz" value="autobus">
+                <label for="prijevoz">Trebam prijevoz</label>
+            </p>
+
+            <p class="izbor">
+                <input type="checkbox" id="pravila"
+                       name="pravila" value="procitana" required>
+                <label for="pravila">
+                    Potvrđujem da sam pročitao/la pravila izleta.
+                </label>
+            </p>
+
+            <p class="polje">
+                <button type="submit">Pošalji prijavu</button>
+            </p>
+
+        </form>
+
+    </main>
+
+</body>
+</html>
