@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sakrij i prikaži odlomak</title>
+</head>
+
+<body>
+
+  <p id="odlomak">Ovo je odlomak koji možemo sakriti i ponovno prikazati.</p>
+
+  <button onclick="promijeniPrikaz()">Sakrij odlomak</button>
+
+  <script>
+    function promijeniPrikaz() {
+      let odlomak = document.getElementById("odlomak");
+      let gumb = document.querySelector("button");
+
+      if (odlomak.style.visibility === "hidden") {
+        odlomak.style.visibility = "visible";
+        gumb.textContent = "Sakrij odlomak";
+      } else {
+        odlomak.style.visibility = "hidden";
+        gumb.textContent = "Prikaži odlomak";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

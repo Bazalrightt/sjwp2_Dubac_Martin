@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+
 <body>
-    
-</body>
+
+    <style>
+        .kartica {
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .istaknuto {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    </head>
+
+    <body>
+        <div id="mojaKartica" class="kartica">
+            <h2>Naslov kartice</h2>
+            <p>Ovo je primjer kartice.</p>
+        </div>
+
+        <button onclick="toggle()">Uključi / isključi</button>
+
+        <script>
+            function toggle() {
+                document.getElementById("mojaKartica")
+                    .classList.toggle("istaknuto");
+            }
+        </script>
+
+    </body>
+
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Promjena slike</title>
+</head>
+
+<body>
+
+  <img id="slika" src="pas.jpg" alt="Pas koji sjedi" width="300">
+
+  <br><br>
+
+  <button onclick="promijeniSliku()">Promijeni sliku</button>
+
+  <script>
+    function promijeniSliku() {
+      let slika = document.getElementById("slika");
+
+      slika.src = "macka.jpg";
+      slika.alt = "Mačka koja sjedi";
+    }
+  </script>
+
+</body>
+
+</html>
