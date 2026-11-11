@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skriptni jezici</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <nav>
+  <ul>
+    <li><a href="./Sport.html">Sport</a></li>
+    <li><a href="./Vijesti.html">Vijesti</a></li>
+    <li><a href="./Novac.html">Novac</a></li>
+  </ul>
+</nav>
+<h1>HTML, CSS, Canvas i SVG</h1>
+
+<p>Canvas je oznaka (tag) HTML5 standarda namijenjena crtanju.
+    <br>
+Canvas je 2D crtaća platforma unutar web preglednika, a koristi JavaScript i HTML.
+<br>
+Upotrebom JavaScript-a se može pristupiti čitavom setu funkcija za crtanje linija,
+<br>
+pravokutnika, lukova, crta, teksta …
+<br>
+On nema vlastiti sadržaj, a od parametara ima samo dimenzije.</p>
+
+<ul>
+    <li>Canvas API (API - Application Programming Interface - aplikacijsko programsko <br>
+sučelje) osigurava alate za crtanje grafike putem JavaScript-a i HTML &lt;canvas&gt; <br>
+elementa.</li>
+    <li>Canvas API je uglavnom namijenjen 2D crtanju, iako postoji mogućnost rada i sa 3D
+grafikom preko WebGL API –ja</li>
+    <li>Crtanje grafike s pomoću oznake &lt;canvas&gt; kombinira poznavanje HTML-a, CSS-a i
+JavaScripta, pa ćemo njega učiti sljedećem poglavlju.</li>
+  </ul>
+
+<hr>
+
+<p> <b>SVG</b>(<i>Scalable Vector Graphics</i>) većinom je manje težine u usporedbi sa Bitmap rasterskom
+slikom, koja posjeduje otprilike iste rezoluciju i grafički prikaz.
+<br>
+Uključivanje SVG-a u HTML dokument omogućava naknadno stiliziranje grafike putem CSS-a,
+ali i manipulaciju JavaScript-om. Tako možemo promijeniti svojstva, kao što su: boja 
+<br>
+pozadine, teksta, okvira, na isti način kao i za bilo koji HTML element.
+<br>
+Zbog toga je omogućeno i animirati sve SVG objekte preko JavaScript biblioteke kao što je
+jQuery.</p>
+
+<h3>Usporedba SVG-a i Canvasa <span>- h3</span></h3>
+
+<table class="usporedba" >
+<tr><th><b>Category</b></th><th>Canvas</th><th>SVG</th></tr>
+    <tr>
+      <td>supporting elements</td>
+      <td>bitmap, based on pixels</td>
+      <td>vector illustration, <br> based on graphic elements</td>
+    </tr>
+    <tr>
+      <td>operation object</td>
+      <td>single html element</td>
+      <td>various graphic elements</td>
+    </tr>
+    <tr>
+      <td>Driver</td>
+      <td>javascruipt and other <br> script driven</td>
+      <td>script or css driven</td>
+    </tr>
+</table >
+
+<table class="mjeseci">
+    <tr><th>Mjesec</th><th>Ušteda</th><th>Ušteda za balgdane</th></tr>
+    <tr><td>Sijecanj</td><td>100€</td><th rowspan="2">50€</th></tr>
+    <tr><td>Veljaca</td><td>80€</td></tr>
+ 
+  </table>
+
+  <br>
+  <br>
+<img src="./Slika1.png" alt="VectorRaster">
+<br>
+
+<h2>Primjer SVG-a</h2>
+
+    <svg width="350" height="250" viewBox="0 0 350 250">
+        <rect width="350" height="250" fill="skyblue"/>
+        <rect y="170" width="350" height="80" fill="dodgerblue"/>
+        <circle cx="60" cy="40" r="25" fill="yellow"/>
+
+        <polygon points="145,100 75,170 145,170" fill="white"/>
+        <polygon points="155,105 155,170 210,170" fill="red"/>
+
+        <rect x="145" y="50" width="8" height="130" fill="black"/>
+        <polygon points="153,50 180,63 153,76" fill="red"/>
+
+        <path d="M75 180 L210 180 Q200 230 140 230 Q85 220 75 180"
+              fill="navy"/>
+
+        <circle cx="115" cy="200" r="8" fill="white"/>
+        <circle cx="145" cy="200" r="8" fill="white"/>
+        <circle cx="175" cy="200" r="8" fill="white"/>
+    </svg>
+
+    <h2>Primjer Canvas</h2>
+
+    <canvas id="slika" width="350" height="250"></canvas>
+
+    <script>
+        const c = document.getElementById("slika");
+        const ctx = c.getContext("2d");
+
+        ctx.fillStyle = "skyblue";
+        ctx.fillRect(0, 0, 350, 170);
+
+        ctx.fillStyle = "dodgerblue";
+        ctx.fillRect(0, 170, 350, 80);
+
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(60, 40, 25, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.moveTo(145, 100);
+        ctx.lineTo(75, 170);
+        ctx.lineTo(145, 170);
+        ctx.fill();
+
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.moveTo(155, 105);
+        ctx.lineTo(155, 170);
+        ctx.lineTo(210, 170);
+        ctx.fill();
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(145, 50, 8, 130);
+
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.moveTo(153, 50);
+        ctx.lineTo(180, 63);
+        ctx.lineTo(153, 76);
+        ctx.fill();
+
+        ctx.fillStyle = "navy";
+        ctx.beginPath();
+        ctx.moveTo(75, 180);
+        ctx.lineTo(210, 180);
+        ctx.quadraticCurveTo(200, 230, 140, 230);
+        ctx.quadraticCurveTo(85, 220, 75, 180);
+        ctx.fill();
+
+        ctx.fillStyle = "white";
+
+        [115, 145, 175].forEach(x => {
+            ctx.beginPath();
+            ctx.arc(x, 200, 8, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    </script>
+
+<h2>Kontakt formular</h2>
+<form action="./uspjeh.html" method="get">
+  <input type="text" name="ime" placeholder="Ime" required>
+  <br>
+  <input type="password" name="password" placeholder="password" required>
+  <br>
+  <input type="color">
+  <br>
+  <button type="submit">Pošalji</button>
+  <br>
+  <button type="reset">Reset</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+/* style.css - izgled web sjedista (bez animacija) */
+
+:root {
+  --tamna:   #17365d;
+  --srednja: #1f4e79;
+  --naglas:  #f1c40f;
+  --svijetla:#f4f6f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Izbornik */
+.izbornik {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px;
+  background-color: var(--tamna);
+}
+
+.izbornik__veza {
+  padding: 16px 12px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.izbornik__veza--aktivna {
+  border-bottom-color: var(--naglas);
+}
+
+/* Zaglavlje stranice */
+.hero {
+  padding: 64px 24px;
+  background-color: var(--srednja);
+  color: #fff;
+  text-align: center;
+}
+
+.hero__naslov {
+  margin: 0 0 8px;
+  font-size: 2.2rem;
+}
+
+.hero__opis {
+  margin: 0 0 24px;
+  font-size: 1.1rem;
+}
+
+.gumb {
+  display: inline-block;
+  padding: 12px 32px;
+  color: var(--srednja);
+  background-color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Sadrzaj */
+.sadrzaj {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.kartica {
+  flex: 1 1 260px;
+  padding: 20px;
+  background-color: var(--svijetla);
+  border-left: 4px solid var(--srednja);
+}
+
+.kartica h2 {
+  margin-top: 0;
+  color: var(--tamna);
+}
+
+.podaci {
+  list-style: none;
+  padding: 0;
+}
+
+.podaci li {
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}

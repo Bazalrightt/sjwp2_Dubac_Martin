@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Omogućavanje i onemogućavanje gumba</title>
+</head>
+
+<body>
+
+  <button onclick="onemoguci()">Onemogući</button>
+  <button onclick="omoguci()">Omogući</button>
+  <button id="treciGumb">Klikni me</button>
+
+  <script>
+    function onemoguci() {
+      document.getElementById("treciGumb").disabled = true;
+    }
+
+    function omoguci() {
+      document.getElementById("treciGumb").disabled = false;
+    }
+  </script>
+
+</body>
+
+</html>
