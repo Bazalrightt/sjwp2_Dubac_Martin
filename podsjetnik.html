@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML + CSS + Canvas + SVG - sve osnove</title>
+
+  <style>
+    /* ============================================================
+       CSS OSNOVE
+       ============================================================ */
+
+    /* --- Varijable --- */
+    :root {
+      --glavna: #3498db;
+      --tamna: #2c3e50;
+      --svijetla: #ecf0f1;
+      --akcent: #e74c3c;
+    }
+
+    /* --- Reset i box model --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* --- Tekst i fontovi --- */
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--tamna);
+      background-color: var(--svijetla);
+    }
+
+    h1 { text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+    h2 { margin-bottom: 10px; border-bottom: 3px solid var(--glavna); padding-bottom: 5px; }
+    a { color: var(--glavna); text-decoration: none; }
+    a:hover { text-decoration: underline; }   /* pseudo-klasa */
+    p::first-line { font-weight: bold; }       /* pseudo-element */
+
+    /* --- Semantički elementi i raspored --- */
+    header, footer {
+      background: var(--tamna);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;                /* FLEXBOX */
+      justify-content: center;
+      gap: 20px;
+      background: var(--glavna);
+      padding: 10px;
+    }
+    nav a { color: white; font-weight: bold; }
+
+    main { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;                         /* zaobljeni rubovi */
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);    /* sjena */
+    }
+
+    /* --- Selektori --- */
+    .klasa { color: var(--akcent); }              /* klasa */
+    #moj-id { font-style: italic; }               /* id */
+    section > p { margin-bottom: 10px; }          /* izravno dijete */
+    h2 + p { color: gray; }                       /* susjedni element */
+    li:nth-child(2) { font-weight: bold; }        /* drugi li */
+    input[type="text"] { border: 2px solid var(--glavna); }  /* atribut */
+
+    /* --- Forme --- */
+    form { display: grid; gap: 10px; max-width: 400px; }
+    input, textarea, select, button {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+
+    /* --- Gumb s tranzicijom --- */
+    button {
+      background: var(--glavna);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;       /* TRANZICIJA */
+    }
+    button:hover { transform: scale(1.1) rotate(2deg); background: var(--akcent); }
+
+    /* --- Tablica --- */
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: var(--glavna); color: white; }
+    tr:nth-child(even) { background: #f2f2f2; }
+
+    /* --- Grid --- */
+    .mreza {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .kutija {
+      padding: 20px;
+      text-align: center;
+      color: white;
+      border-radius: 8px;
+      background: linear-gradient(to right, #3498db, #9b59b6);   /* gradijent */
+    }
+    .kutija.siroka { grid-column: span 2; }
+
+    /* --- Flexbox demo --- */
+    .flex-demo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      gap: 10px;
+      background: #ddd;
+      padding: 10px;
+    }
+    .flex-demo div { flex: 1; min-width: 100px; background: var(--glavna); color: white; padding: 15px; text-align: center; }
+
+    /* --- Pozicioniranje --- */
+    .rod { position: relative; height: 80px; background: #ddd; }
+    .dijete { position: absolute; top: 10px; right: 10px; background: var(--akcent); color: white; padding: 5px 10px; }
+
+    /* --- Animacija --- */
+    @keyframes puls {
+      from { transform: scale(1); background: var(--glavna); }
+      to   { transform: scale(1.3); background: var(--akcent); }
+    }
+    .animirano {
+      width: 80px; height: 80px;
+      margin: 20px auto;
+      border-radius: 50%;
+      animation: puls 1s infinite alternate;
+    }
+
+    /* --- Canvas i SVG okvir --- */
+    canvas, svg { border: 2px dashed #999; background: white; max-width: 100%; }
+    svg circle:hover { fill: var(--akcent); cursor: pointer; }   /* CSS na SVG-u */
+
+    /* --- Responzivnost --- */
+    @media (max-width: 600px) {
+      .mreza { grid-template-columns: 1fr; }
+      .kutija.siroka { grid-column: span 1; }
+      nav { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HTML OSNOVE
+       ============================================================ -->
+  <header>
+    <h1>HTML / CSS / Canvas / SVG</h1>
+    <p>Sve osnove u jednoj datoteci</p>
+  </header>
+
+  <nav>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+    <a href="#canvas">Canvas</a>
+    <a href="#svg">SVG</a>
+  </nav>
+
+  <main>
+
+    <!-- ---------- HTML ---------- -->
+    <section id="html">
+      <h2>1. HTML</h2>
+
+      <h3>Tekst</h3>
+      <p>Ovo je odlomak s <strong>podebljanim</strong> i <em>kurzivnim</em> tekstom.
+         <br>Novi red iznad. <span class="klasa">Span s klasom.</span></p>
+      <p id="moj-id">Ovo je odlomak s id-em.</p>
+      <p><a href="https://www.google.com" target="_blank">Link na Google</a></p>
+      <hr>
+
+      <h3>Liste</h3>
+      <ul>
+        <li>Neporedana 1</li>
+        <li>Neporedana 2</li>
+        <li>Neporedana 3</li>
+      </ul>
+      <ol>
+        <li>Poredana 1</li>
+        <li>Poredana 2</li>
+        <li>Poredana 3</li>
+      </ol>
+      <hr>
+
+      <h3>Slika</h3>
+      <img src="https://picsum.photos/300/150" alt="Nasumična slika" width="300">
+      <hr>
+
+      <h3>Tablica</h3>
+      <table>
+        <thead>
+          <tr><th>Ime</th><th>Dob</th><th>Grad</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ana</td><td>25</td><td>Osijek</td></tr>
+          <tr><td>Marko</td><td>30</td><td>Zagreb</td></tr>
+          <tr><td>Iva</td><td>22</td><td>Split</td></tr>
+        </tbody>
+      </table>
+      <hr>
+
+      <h3>Forma</h3>
+      <form onsubmit="event.preventDefault(); alert('Forma poslana!');">
+        <label for="ime">Ime:</label>
+        <input type="text" id="ime" name="ime" placeholder="Upiši ime" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="lozinka">Lozinka:</label>
+        <input type="password" id="lozinka">
+
+        <label for="broj">Broj:</label>
+        <input type="number" id="broj" min="0" max="100">
+
+        <label for="datum">Datum:</label>
+        <input type="date" id="datum">
+
+        <label><input type="checkbox"> Slažem se</label>
+        <label><input type="radio" name="spol" value="m"> Opcija A</label>
+        <label><input type="radio" name="spol" value="z"> Opcija B</label>
+
+        <select>
+          <option value="1">Opcija 1</option>
+          <option value="2">Opcija 2</option>
+        </select>
+
+        <textarea rows="3" placeholder="Poruka..."></textarea>
+        <button type="submit">Pošalji</button>
+      </form>
+    </section>
+
+    <!-- ---------- CSS ---------- -->
+    <section id="css">
+      <h2>2. CSS</h2>
+      <p>Prvi odlomak: boje, varijable, selektori, sjene, tranzicije (pređi mišem preko gumba iznad).</p>
+
+      <h3>Grid</h3>
+      <div class="mreza">
+        <div class="kutija">1</div>
+        <div class="kutija">2</div>
+        <div class="kutija">3</div>
+        <div class="kutija siroka">4 (široka)</div>
+        <div class="kutija">5</div>
+      </div>
+
+      <h3 style="margin-top:15px">Flexbox</h3>
+      <div class="flex-demo">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+      </div>
+
+      <h3 style="margin-top:15px">Position: relative / absolute</h3>
+      <div class="rod">Roditelj
+        <div class="dijete">Dijete (absolute)</div>
+      </div>
+
+      <h3 style="margin-top:15px">Animacija</h3>
+      <div class="animirano"></div>
+    </section>
+
+    <!-- ---------- CANVAS ---------- -->
+    <section id="canvas">
+      <h2>3. Canvas</h2>
+      <p>Klikni na canvas za ispis koordinata.</p>
+      <canvas id="platno" width="600" height="400"></canvas>
+      <p id="koordinate">Koordinate: -</p>
+
+      <h3>Animacija na canvasu</h3>
+      <canvas id="animPlatno" width="600" height="120"></canvas>
+    </section>
+
+    <!-- ---------- SVG ---------- -->
+    <section id="svg">
+      <h2>4. SVG</h2>
+      <svg id="mojSvg" width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+          <!-- Gradijent -->
+          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="red" />
+            <stop offset="100%" stop-color="blue" />
+          </linearGradient>
+          <!-- Filter (zamućenje) -->
+          <filter id="zamuci">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+          <!-- Element za ponovnu upotrebu -->
+          <circle id="tocka" r="6" fill="black" />
+        </defs>
+
+        <!-- Pravokutnik -->
+        <rect x="10" y="10" width="100" height="60" rx="8" fill="red" />
+        <!-- Krug (hover mijenja boju - CSS) -->
+        <circle id="krug" cx="170" cy="40" r="30" fill="blue" stroke="black" stroke-width="2" />
+        <!-- Elipsa -->
+        <ellipse cx="260" cy="40" rx="50" ry="25" fill="green" />
+        <!-- Linija -->
+        <line x1="330" y1="10" x2="430" y2="70" stroke="black" stroke-width="3" />
+        <!-- Polilinija -->
+        <polyline points="450,70 480,10 510,70 540,10" fill="none" stroke="purple" stroke-width="3" />
+        <!-- Poligon -->
+        <polygon points="80,160 130,100 180,160" fill="orange" />
+
+        <!-- Path: M L Z -->
+        <path d="M200 160 L250 100 L300 160 Z" fill="teal" />
+        <!-- Path: kvadratna krivulja -->
+        <path d="M320 160 Q370 80 420 160" fill="none" stroke="crimson" stroke-width="3" />
+        <!-- Path: Bezier -->
+        <path d="M440 160 C460 80, 520 80, 540 160" fill="none" stroke="navy" stroke-width="3" />
+        <!-- Path: luk -->
+        <path d="M20 250 A50 50 0 0 1 120 250" fill="none" stroke="darkgreen" stroke-width="3" />
+
+        <!-- Gradijent + filter -->
+        <rect x="150" y="200" width="150" height="70" fill="url(#grad)" />
+        <rect x="330" y="200" width="150" height="70" fill="url(#grad)" filter="url(#zamuci)" />
+
+        <!-- Grupa s transformacijom -->
+        <g fill="gold" stroke="black" transform="translate(40,300) rotate(20)">
+          <rect width="50" height="50" />
+          <circle cx="25" cy="25" r="10" fill="white" />
+        </g>
+
+        <!-- use: ponovna upotreba -->
+        <use href="#tocka" x="150" y="320" />
+        <use href="#tocka" x="180" y="320" />
+        <use href="#tocka" x="210" y="320" />
+
+        <!-- Tekst -->
+        <text x="300" y="330" font-size="28" fill="black" text-anchor="middle">Bok SVG!</text>
+
+        <!-- Animacija -->
+        <circle cx="350" cy="370" r="12" fill="red">
+          <animate attributeName="cx" from="350" to="580" dur="2s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Moj prvi cjeloviti primjer</p>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT (Canvas + SVG interakcija)
+       ============================================================ -->
+  <script>
+    // ================= CANVAS =================
+    const canvas = document.getElementById("platno");
+    const ctx = canvas.getContext("2d");
+
+    // Pravokutnici
+    ctx.fillStyle = "red";
+    ctx.fillRect(10, 10, 100, 50);           // x, y, širina, visina
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(130, 10, 100, 50);
+    ctx.clearRect(20, 20, 20, 20);           // izbriši dio
+
+    // Trokut (path)
+    ctx.fillStyle = "orange";
+    ctx.beginPath();
+    ctx.moveTo(280, 60);
+    ctx.lineTo(330, 10);
+    ctx.lineTo(380, 60);
+    ctx.closePath();
+    ctx.fill();
+
+    // Krug (arc)
+    ctx.fillStyle = "green";
+    ctx.beginPath();
+    ctx.arc(450, 35, 30, 0, Math.PI * 2);    // x, y, radijus, početni kut, završni kut
+    ctx.fill();
+
+    // Polukrug (samo obrub)
+    ctx.strokeStyle = "black";
+    ctx.beginPath();
+    ctx.arc(540, 35, 30, 0, Math.PI);
+    ctx.stroke();
+
+    // Krivulje
+    ctx.strokeStyle = "crimson";
+    ctx.beginPath();
+    ctx.moveTo(10, 150);
+    ctx.quadraticCurveTo(80, 80, 150, 150);              // kvadratna
+    ctx.stroke();
+
+    ctx.strokeStyle = "navy";
+    ctx.beginPath();
+    ctx.moveTo(180, 150);
+    ctx.bezierCurveTo(210, 80, 270, 80, 300, 150);       // Bezier
+    ctx.stroke();
+
+    // Gradijent
+    const grad = ctx.createLinearGradient(330, 0, 480, 0);
+    grad.addColorStop(0, "red");
+    grad.addColorStop(1, "blue");
+    ctx.fillStyle = grad;
+    ctx.fillRect(330, 100, 150, 60);
+
+    // Sjena
+    ctx.shadowColor = "black";
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
+    ctx.fillStyle = "purple";
+    ctx.fillRect(500, 100, 60, 60);
+    ctx.shadowColor = "transparent";   // isključi sjenu
+
+    // Tekst
+    ctx.fillStyle = "black";
+    ctx.font = "28px Arial";
+    ctx.textAlign = "left";
+    ctx.fillText("Bok Canvas!", 10, 220);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.strokeText("Bok Canvas!", 10, 260);
+
+    // Transformacije (save / restore)
+    ctx.save();
+    ctx.translate(300, 260);
+    ctx.rotate(Math.PI / 6);
+    ctx.fillStyle = "gold";
+    ctx.fillRect(0, 0, 80, 40);
+    ctx.restore();
+
+    // Slika
+    const slika = new Image();
+    slika.crossOrigin = "anonymous";
+    slika.src = "https://picsum.photos/120/80";
+    slika.onload = () => ctx.drawImage(slika, 450, 300, 120, 80);
+
+    // Događaj miša
+    canvas.addEventListener("click", (e) => {
+      const r = canvas.getBoundingClientRect();
+      const x = Math.round(e.clientX - r.left);
+      const y = Math.round(e.clientY - r.top);
+      document.getElementById("koordinate").textContent = `Koordinate: x=${x}, y=${y}`;
+      ctx.fillStyle = "rgba(255,0,0,0.6)";
+      ctx.beginPath();
+      ctx.arc(x, y, 8, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // ---- Animacija na canvasu ----
+    const aCanvas = document.getElementById("animPlatno");
+    const aCtx = aCanvas.getContext("2d");
+    let x = 0, smjer = 2;
+
+    function animiraj() {
+      aCtx.clearRect(0, 0, aCanvas.width, aCanvas.height);
+      aCtx.fillStyle = "dodgerblue";
+      aCtx.beginPath();
+      aCtx.arc(x, 60, 30, 0, Math.PI * 2);
+      aCtx.fill();
+
+      x += smjer;
+      if (x > aCanvas.width - 30 || x < 30) smjer = -smjer;   // odbijanje
+
+      requestAnimationFrame(animiraj);
+    }
+    animiraj();
+
+
+    // ================= SVG + JS =================
+    const krug = document.getElementById("krug");
+    krug.addEventListener("click", () => {
+      krug.setAttribute("r", Number(krug.getAttribute("r")) + 5);   // povećaj krug klikom
+    });
+  </script>
+
+</body>
+</html>
