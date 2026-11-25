@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narudžba majice za izlet</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .obrazac {
+            background-color: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #cccccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #aaaaaa;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2878c8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #185a99;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="obrazac">
+
+    <h1>Narudžba majice za izlet</h1>
+
+    <form action="primljeno.html" method="get">
+
+        <!-- IME I PREZIME -->
+        <p>
+            <label for="ime">Ime i prezime:</label>
+            <input type="text" id="ime" name="ime" required>
+        </p>
+
+        <!-- VELIČINA MAJICE -->
+        <p>
+            <label for="velicina">Veličina majice:</label>
+
+            <select id="velicina" name="velicina" required>
+
+                <option value="" disabled selected>
+                    -- odaberi veličinu --
+                </option>
+
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+
+            </select>
+        </p>
+
+        <!-- BOJA MAJICE -->
+        <p>
+            <label for="boja">Boja majice:</label>
+
+            <select id="boja" name="boja" required>
+
+                <option value="" disabled selected>
+                    -- odaberi boju --
+                </option>
+
+                <optgroup label="Svijetle boje">
+                    <option value="bijela">Bijela</option>
+                    <option value="zuta">Žuta</option>
+                    <option value="svijetloplava">Svijetloplava</option>
+                </optgroup>
+
+                <optgroup label="Tamne boje">
+                    <option value="crna">Crna</option>
+                    <option value="plava">Plava</option>
+                    <option value="crvena">Crvena</option>
+                </optgroup>
+
+            </select>
+        </p>
+
+        <!-- DODATNI TISAK -->
+        <p>
+            <label for="tisak">
+                Dodatni tisak (možeš odabrati više mogućnosti):
+            </label>
+
+            <select id="tisak" name="tisak" multiple size="4">
+
+                <option value="logo">Logo škole</option>
+                <option value="ime">Ime i prezime</option>
+                <option value="broj">Broj na majici</option>
+                <option value="natpis">Natpis izleta</option>
+
+            </select>
+        </p>
+
+        <!-- GUMB ZA SLANJE -->
+        <button type="submit">Pošalji narudžbu</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
+
