@@ -1,0 +1,44 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff4545;
+  font-family: "Open Sans", sans-serif;
+}
+
+main {
+  width: min(90vw, 420px);
+  text-align: center;
+}
+
+h1 {
+  font-family: "Anton", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 11vw, 6rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 2rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid #1a1a1a;
+  background: #fff;
+  font: 600 0.95rem "Open Sans", sans-serif;
+  color: #222;
+  outline: none;
+}
+
+input:focus { box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25); }
+
+#result {
+  margin-top: 0.5rem;
+  text-align: left;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+}
